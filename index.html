@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator Suhu Salman Zaidan</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f2f2f2;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      .form-group input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input[type="number"]:focus {
+        border-color: #4caf50;
+      }
+
+      .btn-container {
+        text-align: center;
+      }
+
+      .btn-container button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-container button:hover {
+        background-color: #45a049;
+      }
+
+      .result-container {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .result-container h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .result-container p {
+        margin: 0;
+        color: #777;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Kalkulator Suhu Salman Zaidan</h1>
+      <div class="form-group">
+        <label for="temperature">Masukkan suhu:</label>
+        <input
+          type="number"
+          id="temperature"
+          name="temperature"
+          placeholder="Contoh: 25"
+          required />
+      </div>
+      <div class="btn-container">
+        <button type="submit" onclick="convertTemperature()">Konversi</button>
+      </div>
+      <div class="result-container" id="result-container" style="display: none">
+        <h2>Hasil Konversi:</h2>
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <script>
+      function convertTemperature() {
+        const temperatureInput = document.getElementById("temperature");
+        const temperature = parseFloat(temperatureInput.value);
+
+        if (isNaN(temperature)) {
+          alert("Masukkan suhu yang valid!");
+          return;
+        }
+
+        const celsius = ((temperature - 32) * 5) / 9;
+        const fahrenheit = (temperature * 9) / 5 + 32;
+
+        const resultElement = document.getElementById("result");
+        resultElement.innerHTML = `Celsius: ${celsius.toFixed(
+          2
+        )}°C<br>Fahrenheit: ${fahrenheit.toFixed(2)}°F`;
+
+        const resultContainer = document.getElementById("result-container");
+        resultContainer.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
